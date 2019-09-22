@@ -5,7 +5,8 @@ const MyPosts = () => {
   let posts = [
     { id: 1, title: "Cats", likeCounter: 15 },
     { id: 2, title: "Dogs", likeCounter: 13 },
-    { id: 3, title: "Birds", likeCounter: 16 }
+    { id: 3, title: "Birds", likeCounter: 16 },
+    { id: 3, title: "Bears", likeCounter: 12 }
   ];
 
   let post = posts.map(p => <Post title={p.title} like={p.likeCounter} />);
