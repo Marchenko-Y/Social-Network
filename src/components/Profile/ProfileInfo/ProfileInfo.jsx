@@ -1,5 +1,5 @@
 import React from "react";
-import Classes from "./ProfileInfo.module.css";
+import styles from "./ProfileInfo.module.css";
 
 const ProfileInfo = () => {
   return (
@@ -10,7 +10,7 @@ const ProfileInfo = () => {
           alt="sfsf"
         />
       </div>
-      <div className={Classes.descriptionBlock}>ava+desc</div>
+      <div className={styles.descriptionBlock}>ava+desc</div>
     </div>
   );
 };
