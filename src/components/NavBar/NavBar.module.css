@@ -1,15 +1,34 @@
-.nav{
+.nav {
   grid-area: n;
   background-color: brown;
-  padding:20px;
-  
+  padding: 20px;
 }
 
-.item a{
+.item a {
   color: white;
   text-decoration: none;
 }
 
 .item a.activeLink {
   color: goldenrod;
-} 
+}
+.friendsBlock p {
+  color: #fff;
+  font-size: 20px;
+}
+.friendsItem img {
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+}
+.friendsItem p {
+  color: #fff;
+  font-size: 10px;
+}
+.friendsItems {
+  display: flex;
+}
+
+.friendsItem {
+  padding: 5px;
+}
