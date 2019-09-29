@@ -1,15 +1,17 @@
 import React from "react";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
+
 const MyPosts = props => {
   let post = props.posts.map(p => (
     <Post title={p.title} like={p.likeCounter} />
   ));
 
   let newPostElement = React.createRef();
+
   let addPost = () => {
     const text = newPostElement.current.value;
-    alert(text);
+    props.addPost(text);
   };
 
   return (
