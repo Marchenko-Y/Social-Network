@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./NavBar.module.css";
 import { NavLink } from "react-router-dom";
 const NavBar = props => {
-  const navLink = props.state.navLinks.map(n => (
+  const navLink = props.navBarPage.navLinks.map(n => (
     <div className={styles.item}>
       <NavLink to={n.path} activeClassName={styles.activeLink}>
         {n.title}
@@ -10,7 +10,7 @@ const NavBar = props => {
     </div>
   ));
 
-  const friends = props.state.friends.map(f => (
+  const friends = props.navBarPage.friends.map(f => (
     <div className={styles.friendsItem}>
       <img src={f.avatar} alt="avatar" />
       <p>{f.name}</p>
