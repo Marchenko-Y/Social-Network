@@ -103,43 +103,46 @@ let store = {
       ]
     }
   },
-  getState() {
-    return this._state;
-  },
   _callSubscriber() {
     console.log("State changed");
   },
-  addPost() {
-    const newPost = {
-      id: 5,
-      title: this._state.profilePage.newPostText,
-      likeCounter: 5
-    };
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostText = "";
-    this._callSubscriber(this._state);
-  },
-  addMessage() {
-    const newMessage = {
-      id: 1,
-      message: this._state.dialogsPage.newMessageText,
-      img: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg"
-    };
-    this._state.dialogsPage.messages.push(newMessage);
-    this._state.dialogsPage.newMessageText = "";
-    this._callSubscriber(this._state);
-  },
-  updateNewPostText(newText) {
-    this._state.profilePage.newPostText = newText;
-    this._callSubscriber(this._state);
-  },
-  updateNewMessageText(newMessage) {
-    this._state.dialogsPage.newMessageText = newMessage;
-    this._callSubscriber(this._state);
+
+
+  getState() {
+    return this._state;
   },
   subscribe(observer) {
     this._callSubscriber = observer;
+  },
+  
+  dispatch(action) {
+    if(action.type === 'ADD-POST') {
+      const newPost = {
+        id: 5,
+        title: this._state.profilePage.newPostText,
+        likeCounter: 5
+      };
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._state.profilePage.newPostText = action.newText;
+      this._callSubscriber(this._state);
+    } else if (action.type === 'ADD-MESSAGE'){
+      const newMessage = {
+        id: 1,
+        message: this._state.dialogsPage.newMessageText,
+        img: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg"
+      };
+      this._state.dialogsPage.messages.push(newMessage);
+      this._state.dialogsPage.newMessageText = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT'){
+      this._state.dialogsPage.newMessageText = action.newMessage;
+      this._callSubscriber(this._state);
+    }
   }
+ 
 };
 
 export default store;
