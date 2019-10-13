@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./NavBar.module.css";
+import styles from "./SideBar.module.css";
 import { NavLink } from "react-router-dom";
-const NavBar = props => {
-  const navLink = props.navBarPage.navLinks.map(n => (
+const SideBar = props => {
+  const navLink = props.sidebar.navLinks.map(n => (
     <div className={styles.item}>
       <NavLink to={n.path} activeClassName={styles.activeLink}>
         {n.title}
@@ -10,7 +10,7 @@ const NavBar = props => {
     </div>
   ));
 
-  const friends = props.navBarPage.friends.map(f => (
+  const friends = props.sidebar.friends.map(f => (
     <div className={styles.friendsItem}>
       <img src={f.avatar} alt="avatar" />
       <p>{f.name}</p>
@@ -28,4 +28,4 @@ const NavBar = props => {
   );
 };
 
-export default NavBar;
+export default SideBar;
