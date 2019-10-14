@@ -56,7 +56,6 @@ const initialStore = {
 };
 
 const dialogsReducer = (state = initialStore, action) => {
-  debugger;
   switch (action.type) {
     case "SEND-MESSAGE":
       const newMessage = {
