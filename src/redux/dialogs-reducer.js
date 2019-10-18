@@ -57,20 +57,23 @@ const initialStore = {
 
 const dialogsReducer = (state = initialStore, action) => {
   switch (action.type) {
-    case "SEND-MESSAGE":
+    case "SEND-MESSAGE": {
       const newMessage = {
         id: 1,
         message: state.newMessageText,
         img: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg"
       };
-      state.messages.push(newMessage);
-      state.newMessageText = "";
-      return state;
-
-    case "UPDATE-NEW-MESSAGE-TEXT":
-      state.newMessageText = action.newMessage;
-      return state;
-
+      const stateCopy = { ...state };
+      stateCopy.messages = [...state.messages];
+      stateCopy.messages.push(newMessage);
+      stateCopy.newMessageText = "";
+      return stateCopy;
+    }
+    case "UPDATE-NEW-MESSAGE-TEXT": {
+      const stateCopy = { ...state };
+      stateCopy.newMessageText = action.newMessage;
+      return stateCopy;
+    }
     default:
       return state;
   }
