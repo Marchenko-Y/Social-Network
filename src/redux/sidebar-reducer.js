@@ -19,6 +19,10 @@ const initialStore = {
     {
       path: "/settings",
       title: "Settings"
+    },
+    {
+      path: "/users",
+      title: "Users"
     }
   ],
   friends: [

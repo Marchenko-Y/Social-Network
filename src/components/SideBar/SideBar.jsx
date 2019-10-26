@@ -3,7 +3,6 @@ import styles from "./SideBar.module.css";
 import { NavLink } from "react-router-dom";
 
 const SideBar = props => {
-  debugger;
   const navLink = props.navLinks.map(n => (
     <div className={styles.item}>
       <NavLink to={n.path} activeClassName={styles.activeLink}>

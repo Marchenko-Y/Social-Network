@@ -7,7 +7,6 @@ import {
 } from "../../redux/users-reducer";
 
 const mapStateToProps = state => {
-  debugger;
   return {
     users: state.usersPage.users
   };
