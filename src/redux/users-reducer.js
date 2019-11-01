@@ -8,10 +8,11 @@ const initialState = {
   users: [],
   pageSize: 5,
   totalUsersCount: 0,
-  currentPage: 3
+  currentPage: 1
 };
 
 const usersReducer = (state = initialState, action) => {
+  debugger;
   switch (action.type) {
     case "FOLLOW":
       return {
@@ -67,6 +68,7 @@ export const setUsersActionCreator = users => {
   return { type: SET_USERS, users };
 };
 export const setCurrentPageActionCreator = currentPage => {
+  debugger;
   return { type: SET_CURRENT_PAGE, currentPage };
 };
 export const setTotalUsersCountActionCreator = totalCount => {
