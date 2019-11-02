@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-  followActionCreator,
-  unfollowActionCreator,
-  setUsersActionCreator,
-  setCurrentPageActionCreator,
-  setTotalUsersCountActionCreator,
-  toggleIsFetchingActionCreator
+  follow,
+  unfollow,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  toogleIsFenching
 } from "../../redux/users-reducer";
 import * as axios from "axios";
 import Users from "./Users";
@@ -67,30 +67,37 @@ let mapStateToProps = state => {
   };
 };
 
-let mapDispatchToProps = dispatch => {
-  return {
-    follow: userId => {
-      dispatch(followActionCreator(userId));
-    },
-    unfollow: userId => {
-      dispatch(unfollowActionCreator(userId));
-    },
-    setUsers: users => {
-      dispatch(setUsersActionCreator(users));
-    },
-    setCurrentPage: pageNumber => {
-      dispatch(setCurrentPageActionCreator(pageNumber));
-    },
-    setTotalUsersCount: totalCount => {
-      dispatch(setTotalUsersCountActionCreator(totalCount));
-    },
-    toogleIsFenching: isFetching => {
-      dispatch(toggleIsFetchingActionCreator(isFetching));
-    }
-  };
-};
+// let mapDispatchToProps = dispatch => {
+//   return {
+//     follow: userId => {
+//       dispatch(followActionCreator(userId));
+//     },
+//     unfollow: userId => {
+//       dispatch(unfollowActionCreator(userId));
+//     },
+//     setUsers: users => {
+//       dispatch(setUsersActionCreator(users));
+//     },
+//     setCurrentPage: pageNumber => {
+//       dispatch(setCurrentPageActionCreator(pageNumber));
+//     },
+//     setTotalUsersCount: totalCount => {
+//       dispatch(setTotalUsersCountActionCreator(totalCount));
+//     },
+//     toogleIsFenching: isFetching => {
+//       dispatch(toggleIsFetchingActionCreator(isFetching));
+//     }
+//   };
+// };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  {
+    follow,
+    unfollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount,
+    toogleIsFenching
+  }
 )(UsersContainer);
