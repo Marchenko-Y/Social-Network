@@ -18,6 +18,10 @@ const ProfileInfo = props => {
         <img src={props.profile.photos.large} alt="avatar" />
         <div className={styles.profileDescription}>
           <p>
+            <strong>Full name: </strong>
+            {props.profile.fullName}
+          </p>
+          <p>
             <strong>About me:</strong> {props.profile.aboutMe}
           </p>
           <p>
