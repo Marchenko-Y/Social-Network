@@ -23,7 +23,13 @@ export const userApi = {
   setUserAuthData() {
     return instance.get(`auth/me`).then(response => response.data);
   },
-  setUserProfile(userId) {
+  getUserProfile(userId) {
     return instance.get(`profile/` + userId).then(response => response.data);
+  }
+};
+
+export const authApi = {
+  me() {
+    return instance.get(`auth/me`).then(response => response.data);
   }
 };
