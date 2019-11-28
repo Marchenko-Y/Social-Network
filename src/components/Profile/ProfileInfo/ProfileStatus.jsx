@@ -24,6 +24,14 @@ class ProfileStatus extends React.Component {
       status: event.currentTarget.value
     });
   };
+  componentDidUpdate(prevProps, prevState) {
+    debugger;
+    if (prevProps.status !== this.props.status) {
+      this.setState({
+        status: this.props.status
+      });
+    }
+  }
 
   render() {
     return (

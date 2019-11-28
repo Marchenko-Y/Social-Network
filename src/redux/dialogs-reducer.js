@@ -1,5 +1,4 @@
 const SEND_MESSAGE = "SEND_MESSAGE";
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE_NEW_MESSAGE_TEXT";
 
 const initialState = {
   dialogs: [
@@ -51,8 +50,7 @@ const initialState = {
       message: "I`m okay)",
       img: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg"
     }
-  ],
-  newMessageText: "lalala lalalala lalalalalalalala"
+  ]
 };
 
 const dialogsReducer = (state = initialState, action) => {
@@ -60,19 +58,12 @@ const dialogsReducer = (state = initialState, action) => {
     case SEND_MESSAGE:
       const newMessage = {
         id: 1,
-        message: state.newMessageText,
+        message: action.newMessageText,
         img: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg"
       };
       return {
         ...state,
-        newMessageText: "",
         messages: [...state.messages, newMessage]
-      };
-
-    case UPDATE_NEW_MESSAGE_TEXT:
-      return {
-        ...state,
-        newMessageText: action.newMessage
       };
 
     default:
@@ -80,12 +71,8 @@ const dialogsReducer = (state = initialState, action) => {
   }
 };
 
-export const addMessageActionCreator = () => {
-  return { type: SEND_MESSAGE };
-};
-
-export const updateMessageActionCreator = text => {
-  return { type: UPDATE_NEW_MESSAGE_TEXT, newMessage: text };
+export const addMessageActionCreator = newMessageText => {
+  return { type: SEND_MESSAGE, newMessageText };
 };
 
 export default dialogsReducer;
