@@ -6,11 +6,14 @@ const Header = props => {
   return (
     <header className={styles.header}>
       <img src="https://brandmark.io/logo-rank/random/pepsi.png" alt="logo" />
+
       <div className={styles.login_block}>
         {props.isAuth ? (
-          <NavLink to={"/profile/" + props.id}>{props.login}</NavLink>
+          <div>
+            {props.login} - <button onClick={props.logout}>Log out</button>{" "}
+          </div>
         ) : (
-          <NavLink to="/login">login</NavLink>
+          <NavLink to={"/login"}>Login</NavLink>
         )}
       </div>
     </header>

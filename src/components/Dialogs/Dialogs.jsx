@@ -5,7 +5,9 @@ import Message from "./Message/Message";
 import { reduxForm, Field } from "redux-form";
 import { Textarea } from "../common/FormsControl/FormsControl";
 import { required, maxLength } from "../../utils/validators/validators";
+
 const maxlength50 = maxLength(50);
+
 const Dialogs = props => {
   const dialog = props.dialogs.map(d => (
     <DialogItem name={d.name} id={d.id} img={d.img} />
