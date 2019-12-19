@@ -1,4 +1,5 @@
 import { userApi, profileApi } from "../api/api";
+import { async } from "q";
 
 const ADD_POST = "ADD_POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
@@ -9,7 +10,7 @@ const initialStore = {
     { id: 1, title: "Cats", likeCounter: 15 },
     { id: 2, title: "Dogs", likeCounter: 13 },
     { id: 3, title: "Birds", likeCounter: 16 },
-    { id: 3, title: "Bears", likeCounter: 12 }
+    { id: 4, title: "Bears", likeCounter: 12 }
   ],
   profile: null,
   status: ""
@@ -59,23 +60,21 @@ export const setStatus = status => ({
   status
 });
 
-export const getUserProfile = userId => dispatch => {
-  userApi.getUserProfile(userId).then(data => {
-    dispatch(setUserProfile(data));
-  });
-};
-export const getStatus = userId => dispatch => {
-  profileApi.getStatus(userId).then(data => {
-    dispatch(setStatus(data));
-  });
+export const getUserProfile = userId => async dispatch => {
+  const data = await userApi.getUserProfile(userId);
+  dispatch(setUserProfile(data));
 };
 
-export const updateStatus = status => dispatch => {
-  profileApi.updateStatus(status).then(data => {
-    if (data.resultCode === 0) {
-      dispatch(setStatus(status));
-    }
-  });
+export const getStatus = userId => async dispatch => {
+  const data = await profileApi.getStatus(userId);
+  dispatch(setStatus(data));
+};
+
+export const updateStatus = status => async dispatch => {
+  const data = await profileApi.updateStatus(status);
+  if (data.resultCode === 0) {
+    dispatch(setStatus(status));
+  }
 };
 
 export default profileReducer;
